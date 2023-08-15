@@ -13,7 +13,7 @@ FROM coviddeaths
 WHERE location like '%india%'
 ORDER BY 1,2
 
--- Infection rate
+-- Highest Infection rate
 SELECT location,  MAX(total_cases) as highest_infection_rate , population, MAX((total_cases/population))*100 as InfectionPercentage
 FROM ProjectCovid..coviddeaths
 GROUP BY location, population
