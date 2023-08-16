@@ -27,15 +27,15 @@ WHERE continent is not null
 GROUP BY location
 ORDER BY totaldeathcount DESC
 
---Highest death count grouping by continent
+--Highest death count grouping by continent (Tableau viz 2)
 
-SELECT continent, MAX(total_deaths) as totaldeathcount
+SELECT location, MAX(total_deaths) as totaldeathcount 
 FROM	ProjectCovid..coviddeaths
 WHERE continent is not null
-GROUP BY continent
+GROUP BY location
 ORDER BY totaldeathcount DESC
 
---GLOBAL NUMBERS
+--GLOBAL NUMBERS (Tableau viz 1)
 SELECT date, SUM(new_cases), SUM(new_deaths), (SUM(new_deaths)/SUM(new_cases))*100 as DeathPercentage
 FROM ProjectCovid..coviddeaths
 WHERE continent is not null
