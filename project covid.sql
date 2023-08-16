@@ -19,7 +19,7 @@ FROM ProjectCovid..coviddeaths
 GROUP BY location, population
 ORDER BY InfectionPercentage DESC
 
---Highest death count
+--Highest death count (Tableau viz 2)
 
 SELECT location, MAX(total_deaths) as totaldeathcount
 FROM	ProjectCovid..coviddeaths
@@ -27,12 +27,12 @@ WHERE continent is not null
 GROUP BY location
 ORDER BY totaldeathcount DESC
 
---Highest death count grouping by continent (Tableau viz 2)
+--Highest death count grouping by continent 
 
-SELECT location, MAX(total_deaths) as totaldeathcount 
+SELECT continent, MAX(total_deaths) as totaldeathcount 
 FROM	ProjectCovid..coviddeaths
 WHERE continent is not null
-GROUP BY location
+GROUP BY continent
 ORDER BY totaldeathcount DESC
 
 --GLOBAL NUMBERS (Tableau viz 1)
