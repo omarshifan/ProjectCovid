@@ -6,13 +6,14 @@ FROM coviddeaths
 WHERE location like '%india%'
 ORDER BY 1,2
 
--- TOTAL CASES VS POPULATION
+-- TOTAL CASES VS POPULATION (Tableau viz 4)
    
--- Depicts percentage of population that got covid
-SELECT location, date, total_cases, population, (total_cases/population)*100 as InfectionPercentage
-FROM coviddeaths
-WHERE location like '%india%'
-ORDER BY 1,2
+-- Depicts percentage of population that got covid 
+Select Location, Population,date, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
+From PortfolioProject..CovidDeaths
+--Where location like '%states%'
+Group by Location, Population, date
+order by PercentPopulationInfected desc
 
 -- Highest Infection rate (Tableau viz 3)
    
